@@ -1,0 +1,24 @@
+# Build image from dockerfile
+docker build -t friendlyname .
+
+# Run container from image (using friendly name or id)
+docker run -i -t friendlyname /bin/bash
+
+#Delete all docker containers
+docker rm $(docker ps -a -q)
+
+#Delete all docker images
+docker rmi $(docker images -q)
+
+# Docker status
+docker ps -a
+
+
+#get rid of all untagged images.
+docker rmi -f $(docker images | grep "<none>" | awk "{print \$3}")
+
+# Cleanall
+docker container stop $(docker container ls -a -q)
+docker container rm $(docker container ls -a -q)
+docker rmi $(docker images -a -q)
+
