@@ -4,6 +4,12 @@ docker build -t friendlyname .
 # Run container from image (using friendly name or id)
 docker run -i -t friendlyname /bin/bash
 
+# Run docker container in background
+docker run -d -t friendlyname 
+
+# Login/Attach to a docker container
+docker exec -it <container_id> bash
+
 #Delete all docker containers
 docker rm $(docker ps -a -q)
 
